@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İdarə Etmə</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-blue-400 min-h-screen flex items-center justify-center">
+
+    <div class="max-w-4xl mx-auto bg-white p-12 rounded-lg shadow-2xl">
+        <h2 class="text-3xl font-extrabold text-center text-indigo-700 mb-8">Yeni kategoriya əlavə et</h2>
+
+        <form method="POST" class="space-y-8">
+            
+            <div>
+                <label for="new_category" class="block text-xl font-medium text-gray-700 mb-4">Kategoriya Adı:</label>
+                <input type="text" name="new_category" id="new_category" class="w-full px-6 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200 ease-in-out" required>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition duration-200 ease-in-out transform hover:scale-105">
+                    Kategoriya Əlavə et
+                </button>
+            </div>
+        </form>
+
+        <h3 class="text-2xl font-bold text-gray-800 mt-6">Mövcud Kategoriyalar:</h3>
+        
+        <div class="mt-4">
+            <label for="existing_category" class="block text-xl font-medium text-gray-700 mb-4">Seçilən Kategoriya:</label>
+            <form method="POST">
+                <select name="existing_category" id="existing_category" class="w-full px-6 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200 ease-in-out">
+                    {% for category in categories %}
+                        <option value="{{ category }}" class="text-gray-900">{{ category }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="w-full mt-4 bg-indigo-600 text-white py-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition duration-200 ease-in-out transform hover:scale-105">
+                    Kategoriya Seç
+                </button>
+            </form>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="{{ url_for('logout') }}" class="text-indigo-600 hover:text-indigo-800 font-medium text-lg">
+                Çıxış
+            </a>
+        </div>
+        
+    </div>
+
+</body>
+</html>

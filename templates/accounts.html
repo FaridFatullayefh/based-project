@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hesaplar</title>
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .add-button {
+            display: none;
+        }
+
+        .tooltip:hover .add-button {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hesap Ekle</h2>
+
+    <form method="POST">
+        <label for="account">Mail:Şifrə:</label>
+        <input type="text" id="account" name="account" placeholder="mail:pass" required><br><br>
+
+        <label for="user_code">Telefon:</label>
+        <input type="text" id="user_code" name="user_code" placeholder="kod" required><br><br>
+
+        <label for="end_date">tarix:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+
+        <button type="submit">Əlavə Et</button>
+    </form>
+
+    <h3>Mövcud Hesablar:</h3>
+    <ul>
+        {% for account in accounts %}
+            <li>
+                <div class="tooltip">
+                    {{ account.email }}:{{ account.password }}
+                    <span class="tooltiptext">
+                        {% for code in account.user_codes %}
+                            {{ code.user_code }} - Bitiş Tarihi: {{ code.end_date.strftime('%Y-%m-%d') }}<br>
+                        {% endfor %}
+                    </span>
+
+                    <form action="{{ url_for('add_user_code', account_id=account.id) }}" method="POST" class="add-button">
+                        <input type="text" name="user_code" placeholder="kod" required>
+                        <input type="date" name="end_date" required>
+                        <button type="submit">Ekle</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #3b82f6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 24px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #d1d5db;
+            background: #f9fafb;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #3b82f6;
+            background: white;
+            outline: none;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+        }
+
+        .login-button {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #3b82f6, #9333ea);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Giriş</h2>
+        
+        <form method="POST">
+            <div class="mb-4" style="margin-right: 15px;">
+                <label for="username" class="label">İstifadəçi Adı:</label>
+                <input type="text" id="username" name="username" class="input-field" required>
+            </div>
+
+            <div class="mb-6" style="margin-right: 15px;">
+                <label for="password" class="label">Şifrə:</label>
+                <input type="password" id="password" name="password" class="input-field" required>
+            </div>
+
+         
+            <div style="margin-left: 15px;">
+                <button type="submit" class="login-button">
+                    Giriş Et    
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
